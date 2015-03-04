@@ -110,7 +110,7 @@ angular.module('localization', [])
                     var result = '';
 
                     // make sure the dictionary has valid data
-                    if (localize.resourceFileLoaded) {
+                    if  ((localize.dictionary !== []) && (localize.dictionary.length > 0)) { 
                         // use the filter service to only return those entries which match the value
                         // and only take the first result
                         var entry = $filter('filter')(localize.dictionary, function(element) {
@@ -118,7 +118,7 @@ angular.module('localization', [])
                             }
                         );
                         // set the result
-                        result = entry[value] ? entry[value] : value;
+                        result = entry[0] ? entry[0].value : value;
                     }
                     // return the value to the call
                     return result;
